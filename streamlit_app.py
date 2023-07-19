@@ -1,7 +1,7 @@
 import streamlit;
 import pandas;
-import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+import requests;
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon");
 
 
 streamlit.title("My Parents' new healthy diner");
