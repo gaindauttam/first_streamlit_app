@@ -38,15 +38,23 @@ try:
     back_from_def=get_fruityvice_data(fruit_choice)
     streamlit.dataframe(back_from_def);
 except URLerror as e:
-  streamlist.error()
-streamlit.stop();
+  streamlit.error()
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from fruit_load_list")
-my_data_rows = my_cur.fetchall()
+
+
+def get_fruit_load_list():
+    with my_cnx.cursor() as my_cur
+    my_cur.execute("SELECT * from fruit_load_list")
+    my_data_rows = my_cur.fetchall()
+    return my_data_rows
+
 streamlit.header("The fruit load list contains:")
-streamlit.dataframe(my_data_rows)
+if streamlist.button("Get Fruit load list"):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    my_data_rows = get_fruit_load_list();
+    streamlit.dataframe(my_data_rows)
+
+streamlit.stop();
 
 add_fruit = streamlit.text_input('Which fruit would you like to add?','jackfruit');
 streamlit.write('Thanks for adding ', add_fruit);
